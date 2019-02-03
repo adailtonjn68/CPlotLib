@@ -1,3 +1,14 @@
+/*
+Name:			CPlotLib
+
+Created in:		02/feb/2019
+Last edited:	03/feb/2019
+
+Created by:		Adailton Braga Júnior
+E-mail:			adailtonjn68@gmail.com
+
+*/
+
 #include "plot.h"
 
 
