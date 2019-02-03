@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
 
 	// The next 6 lines is where the magic happens
 	Plot2dTypeDef plot1;	// Create an "object" for plotting
+	plot2d(&plot1);
 	plot1.N = N;	// Define number of samples
 	plot1.x = t;	// Assign arrays to be plotted
 	plot1.y = y;
