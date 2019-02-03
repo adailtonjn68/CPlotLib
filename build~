@@ -1,4 +1,0 @@
-#!/bin/bash
-
-gcc  -o run.o -Wall main.c plot.c `pkg-config --cflags --libs gtk+-3.0` -lm -I/home/adailton/Dropbox/Projects/projects_in_c/plot_in_c/
-exit
