@@ -3,3 +3,5 @@
 /objectives
 main.c
 build
+build~
+run.o
