@@ -4,6 +4,13 @@
 
 #define PI 3.141592654
 
+
+/*	All the beginning of the code is merely function definiton for creating a
+	linear space to generate data.
+
+	The beginning of main() is for creating a Gtk Top Level window but it is not
+	really necessary;
+ */
 void linspace(double *x0, double xf, int N) {
 	double dt = (xf - *x0)/(N - 1);
 
@@ -36,12 +43,12 @@ int main(int argc, char *argv[]) {
 
 	for(int i = 0; i<N; ++i) y[i] = sin(t[i]);
 
-	Plot2dTypeDef plot1;
-	plot1.N = N;
-	plot1.x = t;
+	// The next 6 lines is where the magic happens
+	Plot2dTypeDef plot1;	// Create an "object" for plotting
+	plot1.N = N;	// Define number of samples
+	plot1.x = t;	// Assign arrays to be plotted
 	plot1.y = y;
 	plot2d(&plot1);
-
 	gtk_container_add(GTK_CONTAINER(frame), plot1.plot_area);
 
 	gtk_widget_show_all (window);
