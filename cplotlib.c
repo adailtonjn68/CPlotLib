@@ -9,7 +9,7 @@ E-mail:			adailtonjn68@gmail.com
 
 */
 
-#include "plot.h"
+#include "cplotlib.h"
 
 
 void cplotlib_init() {

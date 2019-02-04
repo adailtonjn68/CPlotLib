@@ -9,8 +9,8 @@ E-mail:			adailtonjn68@gmail.com
 
 */
 
-#ifndef PLOT_H_
-#define PLOT_H_
+#ifndef CPLOTLIB_H_
+#define CPLOTLIB_H_
 
 #include <string.h>
 #include <stdlib.h>
