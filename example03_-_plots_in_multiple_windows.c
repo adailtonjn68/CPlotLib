@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "plot.h"
+#include "cplotlib.h"
 
 #define PI 3.141592654
 
