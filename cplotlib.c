@@ -2,7 +2,7 @@
 Name:			CPlotLib
 
 Created in:		02/feb/2019
-Last edited:	03/feb/2019
+Last edited:	08/mar/2019
 
 Created by:		Adailton Braga Júnior
 E-mail:			adailtonjn68@gmail.com
@@ -11,17 +11,25 @@ E-mail:			adailtonjn68@gmail.com
 
 #include "cplotlib.h"
 
-
 void cplotlib_init() {
+/* This function must be used to start Gtk.
+   If gtk_init() was called prevously in Code, cplotlib_init() must not be called.
+*/
 	gtk_init(NULL, NULL);
 }
 
 void plot2d_init(Plot2dTypeDef *plot_struct, unsigned int N, unsigned char nplots) {
 /* plot2d_init(...) is responsible for creating a Gtk drawing area widget, assign
 a callback function and making the initial plot configurations.
- */
- 	if(N<=0 || nplots<1) exit(1);
 
+Plot2dTypeDef *plot_struct  - is the plotting structure;
+unsigned int N - is the number of samples (points);
+unsigned char nplots - is the number of plots in plot_struct;
+ */
+ 	if(N<=0 || nplots<1) {
+		printf("Number of plots of number of samples incosistent\n");
+		exit(1);
+	}
 	plot_struct->plot_area = gtk_drawing_area_new(); // Create Gtk drawing area
 	g_signal_connect(plot_struct->plot_area, "draw", G_CALLBACK(draw2d), plot_struct);
 	plot_struct->nplots = nplots;
@@ -30,6 +38,9 @@ a callback function and making the initial plot configurations.
 
 
 void plot2d(Plot2dTypeDef *plot_struct) {
+/*
+	plot2d(Plot2dTypeDef *) is used to create the Gtk window/frame and set title.
+*/
 	GtkWidget *frame;
 	GtkWidget *window;
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -49,6 +60,10 @@ void plot_show() {
 }
 
 void draw2d(GtkWidget *widget, cairo_t *cr, gpointer data) {
+/* 	draw2d(GtkWidget *, cairo_t *, gpointer) is the where drawing is done.
+
+	This function is not for user use.
+*/
 	// Recover original structure by using its pointer
 	Plot2dTypeDef *plot_struct = data;
 
@@ -114,16 +129,10 @@ void draw2d(GtkWidget *widget, cairo_t *cr, gpointer data) {
 	cairo_line_to(cr, Xleft, Ybottom);	// Left border
 	cairo_line_to(cr, Xleft, Ytop);
 	cairo_stroke(cr);
-
-	//printf("in draw struct %p\n", data);
-	//printf("in draw x %p\n", plot_struct->x);
-	//printf("in draw x[1] %lf\n", *(plot_struct->x + 3));
-	//printf("in draw tentando x %p\n", plot_struct.x);
-	//printf("gpointer %p\n", data);
 }
 
 int relativePoint(double x,double a, int b) {
-	return (a * x + b);
+	return ROUND_(a * x + b);
 }
 
 double min(double *x, int N) {

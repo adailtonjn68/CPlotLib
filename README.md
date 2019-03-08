@@ -17,6 +17,11 @@ Bellow is an example for compilation of **example01_-_simple_plot.c**
 gcc -o run.o example01_-_simple_plot.c cplotlib.c `pkg-config --cflags --libs gtk+-3.0` -lm
 ```
 
+#### Next implementation
+- Grid
+- Axis numbers
+- Labels
+- Subplots
 
 #### Contact
 You can get in touch using the following e-mail
